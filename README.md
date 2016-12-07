@@ -6,4 +6,4 @@ Written mainly to satisfy my needs, Orion has already reached a good maturity le
 
 Since I haven’t had time to dedicate to this project in more than 10 years, it’s now available under a Creative Commons license, so that other might decide to work on it. The sources can be ported with some tweaks to Turbo C++ Express, the free development IDE from Borland (if it still exists ;-)
 
-![Screenshot](https://github.com/wiz78/OrionIRC/master/screenshot.jpeg)
+![Screenshot](https://github.com/wiz78/OrionIRC/blob/master/screenshot.jpeg)
