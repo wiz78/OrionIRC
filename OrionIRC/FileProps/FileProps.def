@@ -1,0 +1,5 @@
+LIBRARY FileProps.dll
+
+EXPORTS
+
+FP_WriteProperties

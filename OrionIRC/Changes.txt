@@ -1,0 +1,195 @@
+----------------------------------------------------------------------
+                          Orion  -  Changelog
+----------------------------------------------------------------------
+                      ©2003-2006 by Simone Tellini
+                          http://tellini.info
+----------------------------------------------------------------------
+
+
+  IMPORTANT: I've began adding scripting support to Orion. It will
+  ---------- actually be very cool, but (big "but" :) I need help to
+             make it accessible: i.e. I need some volunteers to write
+             the documentation. Also, one or two scripters who would
+             like to help with beta-testing and suggestions are welcome.
+             If you wish to collaborate, write to <orion@tellini.info>
+
+
+Version 1.8
+-----------
+
+ - Fixed parsing of commands entered with too many spaces between the
+   arguments (e.g. "/SERVER    irc.foo.bar" didn't work).
+ - URL Catcher: truncates the ini file when updating.
+ - URL Catcher: fixed error when loading saved URL's containing an empty
+   address field.
+
+
+Version 1.7
+-----------
+
+- When using /QUERY, a /WHO is performed to get the right capitalization
+  of the nick to set in the query caption and log name (of course, it only
+  works if the server supports /WHO ;-)
+- "Flash status bar button" didn't work for DCC chat sessions. Fixed.
+- Added the "Server->Channel list..." menu item.
+- Added /LIST command.
+- Added option to sort the tab bar by several criteria.
+- It's now possible to use ALT + <num> (where <num> is between 1 and 0)
+  to activate the first ten windows. When ALT is pressed, the numbers
+  of the windows will be shown in the tab bar.
+- URL Catcher: pressing CTRL-A will select all the items in the list.
+- URL Catcher: enabled the Clear button.
+
+
+Version 1.6
+-----------
+
+- Unrecognized modes will be shown as "<source> sets mode <mode>".
+- Half-Ops are recognized. They will be marked by a half-green,
+  half-yellow dot.
+- URL catcher: URL's which differ only for a trailing slash are
+  considered the same, thus only the first will be saved.
+- Added local output during /cycle.
+- Made the default hostmask used by /ignore more precise.
+- Ignore list: hostmasks added via /ignore or using the context menu
+  weren't saved unless you opened and closed the Ignore window. Fixed.
+- Ignore list: the value for Exclude wasn't saved nor initialized
+  correctly.
+- Options: added setting to compose the name of log files.
+- Input box: pressing Home, End, Ctrl, Shift or Alt while navigating
+  through the history list won't restart from the last typed entry.
+- Input box: when pasting several lines, they will be added to the history
+  list.
+- Input box: entering the first character of the channel name (eg. #) and
+  pressing Tab will complete it (if you're in a channel, of course).
+- PRIVMSG's sent to unknown targets (e.g. @#channel, +#channel or anything
+  else which may arrive) are not discarded.
+- Query window: fixed access violation which could happen after terminating
+  a DCC Chat session.
+- Options: in Appearance/Colours it's now possible to configure styles
+  (bold, italic) for events.
+- Filters: added option to flash the status bar button.
+- Options: added option to flash the status bar button when receiving private
+  messages.
+- Options: added configuration of double click events (under "Miscellaneous")
+
+
+Version 1.5
+-----------
+
+- Added local output for /msg and /page.
+- Fixed /quote which has been broken in 1.4.
+- Added option to disable the lag-meter.
+- Added "Search" item to the messages context menu: it searches in the
+  back buffer.
+- Added option to choose how to sort the nick list.
+- Servers configuration: fixed Connect button not activating when
+  adding a new item and filling the Host box.
+- Aliases without parameters (%s, %1, etc...) didn't work. Fixed.
+- When Orion is minimised in the system tray and you receive a private
+  message, its icon will blink.
+- Added option to restore Orion automatically when receiving a private
+  message.
+- When receiving a file via DCC, Orion will tag it with a comment
+  with the sender's nick. It works only on Windows 2000/XP or higher,
+  only on NTFS partitions and only for certain file types.
+- Options: sounds can be configured for certain events.
+- Pressing PageUp/PageDown in windows scrolls buffer up/down.
+- Input box: ESC clears the text.
+- Input box: Ctrl + Backspace deletes text to the left of cursor.
+- Input box: Ctrl + Delete deletes text to the right of cursor.
+- Fixed drawing problems with color codes followed by extended ASCII
+  characters (e.g. cyrillic).
+- Server settings: added Invites, Notices and Notifications among the
+  events which can be configured.
+- Server tab changes color to red when it receives new messages.
+- Improved the URL catcher.
+
+
+Version 1.4
+-----------
+
+- Added support for Eyelin (http://www.eyelin.net/).
+- Options: added configurable aliases for commands.
+- Added nick and status next to the input box in the channel windows.
+- Fixed PING reply to show "0 secs" instead of nothing when ping'ing an
+  user.
+- Notices sent to unknown targets will be displayed nevertheless.
+
+
+Version 1.3
+-----------
+
+- Added option to strip colors from incoming messages.
+- Added option to limit the DCC port range.
+- Added support for UnrealIRCd & and ~ user modes. Channel admins will
+  be shown in the list with a blue dot, channel owners with a red one.
+- Added the /USERIP command (available only on some servers, eg. those
+  running Unreal IRCd).
+- Added the /KNOCK command (available only on some servers, eg. those
+  running Unreal IRCd).
+- Added the /DCCALLOW command (available only on some servers, eg. those
+  running Unreal IRCd).
+- Server settings: added option to choose where to display certain events
+  (joins, parts...) which can be a nuisance on large channels. 
+- Fixed /WHOIS not reporting the real name of the user.
+- If a server forced a channel join on connection, the result of the
+  initial /WHO of the channel wasn't hidden. Fixed.
+- Improved the URL catching routine which could be way too slow under
+  certain conditions.
+- Worked around yet another BCB3 bug which caused serious slow-down
+  when loading the catched URL's on startup.
+- Forms will be correctly maximised on start if you left them maximised
+  when closing the program.
+- When kicked out from a channel or disconnected from the server, the
+  channel input bar will change color to gray.
+- Added "Clear buffer" to the status window popup menu.
+- Fixed status window not updating its title/switchbar button after a
+  /SERVER command.
+- Implemented the code behind the "Ignore" button in the DCC Chat request
+  window. It had no effect whatsoever so far. Whoops.
+- Fixed a couple of bugs regarding notifications.
+- Server settings weren't applied if reconnecting with the "Switch server"
+  button.
+- Fixed hotspots not working correctly with control codes (i.e. you could
+  see a "Click here to..." hint misplaced respect the corresponding URL or
+  channel name if the line had colours in it).
+
+
+Version 1.2
+-----------
+
+- Added "Clear buffer" to the query window popup menu.
+- Fixed the "Edit" button for DCC Send filters in the options.
+
+
+Version 1.1
+-----------
+
+- Servers config: added commands to be execute on connection.
+- Added "Save buffer..." menu item on channels/queries/servers.
+- Fixed lagmeter not being updated correctly when reconnecting to
+  a server after a connection loss.
+- Fixed message displayed when a user added/removed more than one
+  ban/exception/invite at once.
+- Fixed /msg.
+- Implemented /ignore.
+- Finished the Ignore menu item on the user list and the
+  Ignore button in query windows.
+- Auto-rejoin works even when kicked from a keyword protected
+  channel.
+- /nick now passes extra parameters to the server (useful to
+  send /nick <nick> <pwd> on Unreal ircd servers).
+- Fixed the URL catcher not to eat an awful lot of CPU cycles
+  on certain complex URL's.
+- Added option to ask for comfirmation before quitting.
+- Server messages parsing now accepts '\n' too instead of '\r\n' as
+  line terminator, thus avoiding problems with servers which don't
+  comply strictly with the IRC RFC (Irssi proxy, for one).
+- Small fixes here and there.
+
+
+Version 1.0
+-----------
+
+- Initial release.

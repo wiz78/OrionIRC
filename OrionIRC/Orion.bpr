@@ -1,0 +1,265 @@
+# ---------------------------------------------------------------------------
+!if !$d(BCB)
+BCB = $(MAKEDIR)\..
+!endif
+
+# ---------------------------------------------------------------------------
+# IDE SECTION
+# ---------------------------------------------------------------------------
+# The following section of the project makefile is managed by the BCB IDE.
+# It is recommended to use the IDE to change any of the values in this
+# section.
+# ---------------------------------------------------------------------------
+
+VERSION = BCB.03
+# ---------------------------------------------------------------------------
+PROJECT = Orion.exe
+OBJFILES = objects\Orion.obj objects\Version.obj objects\Main.obj objects\About.obj \
+  objects\RawWnd.obj objects\ServerWnd.obj objects\ChanWnd.obj \
+  objects\QueryWnd.obj objects\tcpsocket.obj objects\buffer.obj \
+  objects\iodispatcher.obj objects\socket.obj objects\IRCUtils.obj \
+  objects\IRCList.obj objects\IRCListRow.obj objects\IRCParser.obj \
+  objects\IRCEdit.obj objects\IRCTopic.obj objects\Commands.obj \
+  objects\OptionsWnd.obj objects\ServersWnd.obj objects\Prefs.obj \
+  objects\Server.obj objects\Hostmask.obj objects\DCCChatOfferWnd.obj \
+  objects\DCCMgrWnd.obj objects\DCCTransfer.obj objects\DCCSendOfferWnd.obj \
+  objects\DCCMgr.obj objects\AskRemoveWnd.obj objects\Hotspot.obj \
+  objects\Identd.obj objects\ChanPropWnd.obj objects\DNSReq.obj \
+  objects\ColorSet.obj objects\FilterWnd.obj objects\Filter.obj \
+  objects\FilterMgr.obj objects\MySpeedButton.obj objects\FavouritesWnd.obj \
+  objects\Favourite.obj objects\FavWnd.obj objects\FavouritesMgr.obj \
+  objects\Logger.obj objects\FileFilter.obj objects\FileFilterWnd.obj \
+  objects\FileFilterMgr.obj objects\URLCatcher.obj objects\URL.obj \
+  objects\URLCatcherWnd.obj objects\URLWnd.obj objects\WizStrHash.obj \
+  objects\KickBanWnd.obj objects\User.obj objects\IRCChanData.obj \
+  objects\Notify.obj objects\NotifyMgr.obj objects\NotifyHandler.obj \
+  objects\NotifyWnd.obj objects\EditNotifyWnd.obj objects\MatchStr.obj \
+  objects\IgnoreMgr.obj objects\Ignore.obj objects\IgnoreWnd.obj \
+  objects\MyIniFile.obj objects\Eyelin.obj objects\Alias.obj \
+  objects\AliasesMgr.obj objects\EditAliasWnd.obj \
+  objects\OrionScriptInterface.obj objects\ScriptingWnd.obj objects\ScriptsMgr.obj \
+  objects\Script.obj objects\ScriptClasses.obj objects\ScriptBasic.obj \
+  objects\ScriptEvent.obj objects\ScriptConstants.obj objects\BufferSearchWnd.obj \
+  objects\SearchResultsWnd.obj objects\SoundsMgr.obj objects\DblClickAction.obj \
+  objects\ChanListWnd.obj
+RESFILES = Orion.res
+RESDEPEN = $(RESFILES) Main.dfm About.dfm RawWnd.dfm ServerWnd.dfm ChanWnd.dfm \
+  QueryWnd.dfm OptionsWnd.dfm ServersWnd.dfm DCCChatOfferWnd.dfm DCCMgrWnd.dfm \
+  DCCSendOfferWnd.dfm AskRemoveWnd.dfm ChanPropWnd.dfm FilterWnd.dfm \
+  FavouritesWnd.dfm FavWnd.dfm FileFilterWnd.dfm URLCatcherWnd.dfm URLWnd.dfm \
+  KickBanWnd.dfm NotifyWnd.dfm EditNotifyWnd.dfm IgnoreWnd.dfm EditAliasWnd.dfm \
+  ScriptingWnd.dfm BufferSearchWnd.dfm SearchResultsWnd.dfm ChanListWnd.dfm
+LIBFILES = ..\WizUpdate\Release_Build\WizUpdate.lib \
+  ..\Libraries\pcre-5.0\Release\pcre_Borland.lib \
+  OrionScript\Release\OrionScript_Borland.lib \
+  FileProps\Release\FileProps_Borland.lib
+LIBRARIES = DragDropC3.lib VCLDB35.lib aprdlgs35.lib VCLX35.lib Rxctl.lib WizTools.lib \
+  VCL35.lib
+SPARELIBS = VCL35.lib WizTools.lib Rxctl.lib VCLX35.lib aprdlgs35.lib VCLDB35.lib \
+  DragDropC3.lib
+DEFFILE =
+PACKAGES = vclx35.bpi VCL35.bpi vcldb35.bpi vcldbx35.bpi bcbsmp35.bpi dclocx35.bpi \
+  Qrpt35.bpi teeui35.bpi teedb35.bpi tee35.bpi ibsmp35.bpi NMFast35.bpi \
+  inetdb35.bpi inet35.bpi Rxctl.bpi Rxdb.bpi DragDropC3.bpi jpegpkg.bpi \
+  WizTools.bpi WinshoesPkgCB3.bpi aprdlgs35.bpi
+# ---------------------------------------------------------------------------
+PATHCPP = .;
+PATHASM = .;
+PATHPAS = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+# ---------------------------------------------------------------------------
+CFLAG1 = -Od -w-par -w-inl -Ve -k- -vi- -c -b- -Vx -tW
+CFLAG2 = -DDEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES;SCRIPTING=1 \
+  -I..\..\borland\cbuilder3\projects;OrionScript;..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;..\Libraries\Zend\Zend;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude \
+  -H=$(BCB)\lib\vcl35.csm
+CFLAG3 = -w-pia -Tkh30000
+PFLAGS = -DDEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES;SCRIPTING=1 \
+  -N2objects -N0objects \
+  -U..\..\borland\cbuilder3\projects;..\wizpackage;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs;$(RELEASELIBPATH) \
+  -I..\..\borland\cbuilder3\projects;OrionScript;..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;..\Libraries\Zend\Zend;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude \
+  -$L- -$D- -v -JPHN -M
+RFLAGS = -DDEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES;SCRIPTING=1 \
+  -i..\..\borland\cbuilder3\projects;OrionScript;..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;..\Libraries\Zend\Zend;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+AFLAGS = /i..\..\borland\cbuilder3\projects /iOrionScript /i..\Eyelin\EyelinAPI \
+  /i..\Libraries\PCRE-5.0 /i..\WizUpdate /i..\wizpackage /i..\Libraries\Zend\Zend \
+  /i$(BCB)\include /i$(BCB)\include\vcl /i$(BCB)\extrainclude /dDEBUG=1 \
+  /dZEND_WIN32 /dZEND_DEBUG=0 /d__assume /dZEND_NO_INLINES /dSCRIPTING=1 /mx /w2 \
+  /zn
+LFLAGS = -L..\..\borland\cbuilder3\projects;..\wizpackage;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs;$(RELEASELIBPATH) \
+  -aa -Tpe -s -Gn
+IFLAGS =
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+!ifdef IDEOPTIONS
+
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=1
+MajorVer=1
+MinorVer=9
+Release=0
+Build=15
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1040
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=Simone Tellini
+FileDescription=Orion IRC Client
+FileVersion=1.9.0.15
+InternalName=Orion
+LegalCopyright=©2003-2006 by Simone Tellini
+LegalTrademarks=
+OriginalFilename=Orion.exe
+ProductName=Orion
+ProductVersion=1.9
+Comments=
+
+[Excluded Packages]
+E:\Borland\CBuilder3\ExtraLib\dclaprd35.bpl=APR Dialogs
+
+[HistoryLists\hlIncludePath]
+Count=11
+Item0=..\..\borland\cbuilder3\projects;OrionScript;..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;..\Libraries\Zend\Zend;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item1=OrionScript;..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;..\Libraries\Zend\Zend;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item2=OrionScript;..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item3=..\Eyelin\EyelinAPI;..\Libraries\PCRE-5.0;..\WizUpdate;..\wizpackage;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item4=..\WizUpdate;..\Libraries\PCRE-5.0;..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item5=..\WizUpdate;..\Libraries\PCRE3.4\TAE MODs;..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item6=..\mp3-cat;..\Libraries\PCRE3.4\TAE MODs;..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item7=..\Libraries\PCRE3.4\TAE MODs;..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item8=..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item9=..\..\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+Item10=$(BCB)\include;$(BCB)\include\vcl;$(BCB)\extrainclude
+
+[HistoryLists\hlLibraryPath]
+Count=7
+Item0=..\..\borland\cbuilder3\projects;..\wizpackage;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+Item1=..\wizpackage;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+Item2=..\mp3-cat;..\..\borland\cbuilder3\extralib;..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+Item3=..\..\borland\cbuilder3\extralib;..\wizpackage;..\..\borland\cbuilder3\projects;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+Item4=..\..\borland\cbuilder3\projects;$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+Item5=$(BCB)\extralib;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+Item6=$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\extralibs
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=9
+Item0=DEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES;SCRIPTING=1
+Item1=DEBUG=0;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES;SCRIPTING=0
+Item2=DEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES;SCRIPTING=0
+Item3=DEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume;ZEND_NO_INLINES
+Item4=DEBUG=1;ZEND_WIN32;ZEND_DEBUG=0;__assume
+Item5=DEBUG=1
+Item6=DEBUG=0
+Item7=USEPACKAGES
+Item8=_RTLDLL;USEPACKAGES
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=objects
+
+[HistoryLists\hlHostApplication]
+Count=1
+Item0=E:\Projects\Orion\catcher.exe
+
+[HistoryLists\hlRunParameters]
+Count=2
+Item0=orion orion.exe
+Item1=orion.exe
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+
+!endif
+
+# ---------------------------------------------------------------------------
+# MAKE SECTION
+# ---------------------------------------------------------------------------
+# This section of the project file is not used by the BCB IDE.  It is for
+# the benefit of building from the command-line using the MAKE utility.
+# ---------------------------------------------------------------------------
+
+.autodepend
+# ---------------------------------------------------------------------------
+!if !$d(BCC32)
+BCC32 = bcc32
+!endif
+
+!if !$d(DCC32)
+DCC32 = dcc32
+!endif
+
+!if !$d(TASM32)
+TASM32 = tasm32
+!endif
+
+!if !$d(LINKER)
+LINKER = ilink32
+!endif
+
+!if !$d(BRCC32)
+BRCC32 = brcc32
+!endif
+# ---------------------------------------------------------------------------
+!if $d(PATHCPP)
+.PATH.CPP = $(PATHCPP)
+.PATH.C   = $(PATHCPP)
+!endif
+
+!if $d(PATHPAS)
+.PATH.PAS = $(PATHPAS)
+!endif
+
+!if $d(PATHASM)
+.PATH.ASM = $(PATHASM)
+!endif
+
+!if $d(PATHRC)
+.PATH.RC  = $(PATHRC)
+!endif
+# ---------------------------------------------------------------------------
+$(PROJECT): $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES)
+!
+# ---------------------------------------------------------------------------
+.pas.hpp:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.pas.obj:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.cpp.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(CFLAG2) $(CFLAG3) -n$(@D) {$< }
+
+.c.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(CFLAG2) $(CFLAG3) -n$(@D) {$< }
+
+.asm.obj:
+    $(BCB)\BIN\$(TASM32) $(AFLAGS) $<, $@
+
+.rc.res:
+    $(BCB)\BIN\$(BRCC32) $(RFLAGS) -fo$@ $<
+# ---------------------------------------------------------------------------
